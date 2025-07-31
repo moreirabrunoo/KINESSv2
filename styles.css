@@ -1,0 +1,232 @@
+
+
+/* styles.css actualizado */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+header {
+    background: #008080;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    background: url('https://source.unsplash.com/1600x600/?physiotherapy') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: #008080;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #006666;
+}
+
+.servicios, .agenda {
+    padding: 2rem;
+    text-align: center;
+}
+
+.servicios h2, .agenda h2 {
+    margin-bottom: 1.5rem;
+    color: #008080;
+}
+
+.cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.agenda form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.agenda label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.agenda input, .agenda button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Calendar Styles */
+#calendar {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    color: #008080;
+}
+
+.calendar-header button {
+    background: #008080;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.calendar-header button:hover {
+    background: #006666;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day-name, .calendar-day {
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 5px;
+}
+
+.calendar-day-name {
+    font-weight: bold;
+    background: #f0f0f0;
+}
+
+.calendar-day {
+    background: #fafafa;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.calendar-day:hover {
+    background: #e0f7fa;
+}
+
+.calendar-day.has-reservas {
+    background: #c8e6c9;
+    border: 2px solid #66bb6a;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.calendar-day.today {
+    background: #ffe082;
+    border: 2px solid #ffca28;
+}
+
+.calendar-day.empty {
+    background: transparent;
+    cursor: default;
+}
+
+/* Confirmation Message */
+.confirmacion.success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
