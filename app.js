@@ -1,34 +1,26 @@
-document.getElementById('agendaForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const fecha = document.getElementById('fecha').value;
-    const hora = document.getElementById('hora').value;
-
-    if (nombre && email && fecha && hora) {
-        const confirmacion = document.getElementById('confirmacion');
-        confirmacion.innerHTML = `<p>Gracias ${nombre}, tu turno para el ${fecha} a las ${hora} fue reservado correctamente. Te enviaremos un mail a ${email}.</p>`;
-        confirmacion.style.backgroundColor = '#d4edda';
-        confirmacion.style.color = '#155724';
-        confirmacion.style.padding = '1rem';
-        confirmacion.style.borderRadius = '5px';
-        
-        document.getElementById('agendaForm').reset();
-    } else {
-        alert('Por favor completa todos los campos');
-    }
-});
-
+// app.js actualizado con selector visual de fecha
 
 const agendaForm = document.getElementById('agendaForm');
 const confirmacion = document.getElementById('confirmacion');
 const calendarContainer = document.createElement('div');
 calendarContainer.id = 'calendar';
+calendarContainer.style.display = 'none';
 document.querySelector('.agenda').appendChild(calendarContainer);
+
+const fechaInput = document.getElementById('fecha');
 
 let reservas = JSON.parse(localStorage.getItem('reservas')) || [];
 let currentDate = new Date();
+
+fechaInput.addEventListener('focus', () => {
+    calendarContainer.style.display = 'block';
+});
+
+document.addEventListener('click', function (e) {
+    if (!calendarContainer.contains(e.target) && e.target !== fechaInput) {
+        calendarContainer.style.display = 'none';
+    }
+});
 
 agendaForm.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -98,11 +90,25 @@ function renderCalendar(date) {
         const dayDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         const dayReservas = reservas.filter(r => r.fecha === dayDate);
 
+        const today = new Date();
+        if (
+            day === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear()
+        ) {
+            dayCell.classList.add('today');
+        }
+
         if (dayReservas.length > 0) {
             dayCell.classList.add('has-reservas');
         }
 
-        dayCell.addEventListener('click', () => mostrarReservas(dayDate));
+        dayCell.addEventListener('click', () => {
+            fechaInput.value = dayDate;
+            calendarContainer.style.display = 'none';
+            mostrarReservas(dayDate);
+        });
+
         grid.appendChild(dayCell);
     }
 
@@ -122,13 +128,12 @@ function renderCalendar(date) {
 function mostrarReservas(fecha) {
     const reservasDelDia = reservas.filter(r => r.fecha === fecha);
     if (reservasDelDia.length === 0) {
-        alert(`No hay reservas para ${fecha}`);
+        console.log(`No hay reservas para ${fecha}`);
     } else {
-        let mensaje = `Reservas para ${fecha}:\n`;
+        console.log(`Reservas para ${fecha}:`);
         reservasDelDia.forEach(r => {
-            mensaje += `- ${r.hora} - ${r.nombre}\n`;
+            console.log(`- ${r.hora} - ${r.nombre}`);
         });
-        alert(mensaje);
     }
 }
 

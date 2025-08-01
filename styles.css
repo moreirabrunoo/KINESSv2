@@ -1,6 +1,6 @@
 
 
-/* styles.css actualizado */
+/* styles.css con diseño para selector de fecha personalizado */
 
 /* General Styles */
 body {
@@ -40,13 +40,14 @@ header nav ul li a {
 
 .hero {
     background: url('https://source.unsplash.com/1600x600/?physiotherapy') no-repeat center center/cover;
-    color: #fff;
+    color: #008080;
     text-align: center;
     padding: 5rem 2rem;
 }
 
 .hero h1 {
     font-size: 2.5rem;
+    color: #008080;
 }
 
 .hero p {
@@ -212,6 +213,29 @@ footer {
     padding: 1rem;
     border-radius: 5px;
     margin-top: 1rem;
+}
+
+/* Campo de fecha personalizado */
+.custom-date-input {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 100%;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.custom-date-input:hover {
+    background-color: #f0f0f0;
+}
+
+.custom-date-input .icono {
+    font-size: 1.2rem;
 }
 
 /* Responsive */
